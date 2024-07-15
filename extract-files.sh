@@ -91,6 +91,10 @@ function blob_fixup() {
 	    [ "$2" = "" ] && return 0
             "${PATCHELF_0_17_2}" --add-needed "libhidlbase_shim.so" "${2}"
             ;;
+        vendor/etc/init/vendor.xiaomi.hardware.vibratorfeature.service.rc)
+            [ "$2" = "" ] && return 0
+            sed -i "s/\/odm\/bin\//\/vendor\/bin\//g" "${2}"
+            ;;
         *)
             return 1
             ;;
